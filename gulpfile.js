@@ -301,7 +301,7 @@ gulp.task('js', () => {
 							loader: 'babel-loader',
 							options: {
 								presets: [
-									'babel-preset-env',
+									'babel-preset-env', 'react',
 								],
 								plugins: [
 									'babel-plugin-transform-runtime',

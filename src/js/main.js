@@ -1,4 +1,9 @@
 import './vendor';
+import React from 'react';
+import {render} from 'react-dom';
+import App from './components/App'
+
+render(<App/>, document.getElementById('app'));
 
 // forEach polyfill
 if ('NodeList' in window && !NodeList.prototype.forEach) {
@@ -26,39 +31,6 @@ function isTouchDevice() {
 	return mq(query);
 }
 
-function cardEvents() {
-	let links = document.querySelectorAll('[data-product]');
-
-	links.forEach((link) => {
-		link.addEventListener('click', (e) => {
-			let product = e.currentTarget.dataset.product;
-			let checkbox = document.getElementById(product);
-
-			e.preventDefault();
-
-			if (!checkbox.disabled) {
-				if (checkbox.indeterminate && !checkbox.checked) {
-					checkbox.indeterminate = false;
-				} else if (!checkbox.indeterminate && !checkbox.checked) {
-					checkbox.indeterminate = true;
-				} else if (checkbox.checked) {
-					checkbox.checked = false;
-				}
-			}
-		});
-
-		link.addEventListener('mouseleave', (e) => {
-			let product = e.currentTarget.dataset.product;
-			let checkbox = document.getElementById(product);
-
-			if (!checkbox.disabled && checkbox.indeterminate) {
-				checkbox.indeterminate = false;
-				checkbox.checked = true;
-			}
-		});
-	});
-}
-
 function cardWeightFontSize() {
 	let blocks = document.querySelectorAll('.card__weight .count');
 	const blockWidth = 80;
@@ -74,7 +46,6 @@ function cardWeightFontSize() {
 	});
 }
 
-cardEvents();
 cardWeightFontSize();
 if (isTouchDevice()) {
 	document.body.classList.add('touch-device');
