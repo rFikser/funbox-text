@@ -1,0 +1,12 @@
+extends pug/base
+
+block content
+	main
+		h1 Ты сегодня покормил кота?
+		.cards
+			.cards__container
+				+card('Сказочное заморское яство', 'Нямушка', 'с фуа-гра', 'Печень утки разварная с артишоками.', '10 порций', 'мышь', '0,5', false, '/images/cat.png', 'fuagra', false, false)
+			.cards__container
+				+card('Сказочное заморское яство', 'Нямушка', 'с рыбой', 'Головы щучьи с чесноком да свежайшая сёмгушка.', '40 порций', '2 мыши', '2', false, '/images/cat.png', 'fish', true, false)
+			.cards__container
+				+card('Сказочное заморское яство', 'Нямушка', 'с курой', 'Филе из цыплят с трюфелями в бульоне.', '100 порций', '5 мышей', '5', true, '/images/cat.png', 'chicken', false, true)

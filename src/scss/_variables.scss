@@ -1,0 +1,28 @@
+// stylelint-disable scss/dollar-variable-empty-line-before
+
+// BASE
+$gutter: 20px;
+$breakpoints: ("small": 0, "medium": 768px, "large": 1024px);
+
+// COLORS
+$color-black: #000;
+$color-white: #fff;
+$color-white2: #f2f2f2;
+$color-blue: #1698d9;
+$color-blue-hover: #2ea8e6;
+$color-gray: #666;
+$color-gray2: #b3b3b3;
+$color-yellow: #ff6;
+$color-red: #d91667;
+$color-red-hover: #e52e7a;
+
+// FONTS
+$font-exo2: "Exo 2", sans-serif;
+$font-trebuchet: "Trebuchet MS", sans-serif;
+
+// CARD
+$card-indent-size: 44px;
+$card-width: 320px;
+$card-height: 480px - $card-indent-size;
+$card-border-radius: 12px;
+$card-border-width: 4px;

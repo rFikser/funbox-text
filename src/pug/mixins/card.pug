@@ -1,0 +1,18 @@
+mixin card(title, name, type, description, portions, mouses, weight, satisfied, image, code, checked, disabled)
+	input.card-check(type="checkbox" id= code checked= checked disabled= disabled name="product")
+	.card(data-product= code)
+		.card__background(style="background-image: url(" + image + ")")
+		.card__title= title
+		.card__title.on-hover Котэ не одобряет?
+		.card__name= name
+		.card__type= type
+		.card__present #{portions} #{mouses} в подарок
+		if satisfied
+			.card__satisfied заказчик доволен
+		.card__weight
+			span.count= weight
+			span.dimension кг
+	.card-description
+		span.on-default Чего сидишь? Порадуй котэ, #[a(href="#" data-product= code) купи].
+		span.on-selected= description
+		span.on-disabled Печалька, #{type} закончился.
