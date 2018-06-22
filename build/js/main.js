@@ -1,2 +1,104 @@
-webpackJsonp([0],{125:function(e,t,n){"use strict";var o,c;n(126),"NodeList"in window&&!NodeList.prototype.forEach&&(NodeList.prototype.forEach=function(e,t){t=t||window;for(var n=0;n<(void 0).length;n++)e.call(t,(void 0)[n],n,void 0)}),document.querySelectorAll("[data-product]").forEach(function(e){e.addEventListener("click",function(e){var t=e.currentTarget.dataset.product,n=document.getElementById(t);e.preventDefault(),n.disabled||(n.indeterminate&&!n.checked?n.indeterminate=!1:n.indeterminate||n.checked?n.checked&&(n.checked=!1):n.indeterminate=!0)}),e.addEventListener("mouseleave",function(e){var t=e.currentTarget.dataset.product,n=document.getElementById(t);!n.disabled&&n.indeterminate&&(n.indeterminate=!1,n.checked=!0)})}),document.querySelectorAll(".card__weight .count").forEach(function(e){if(e.offsetWidth>80){var t=e.innerText.length,n=Math.min(42,80/t*2);e.style.fontSize=n+"px"}}),c=" -webkit- -moz- -o- -ms- ".split(" "),("ontouchstart"in window||window.DocumentTouch&&document instanceof DocumentTouch||(o=["(",c.join("touch-enabled),("),"heartz",")"].join(""),window.matchMedia(o).matches))&&document.body.classList.add("touch-device")},126:function(e,t,n){"use strict";n(127)}},[125]);
+webpackJsonp([0],{
+
+/***/ 125:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+__webpack_require__(126);
+
+// forEach polyfill
+if ('NodeList' in window && !NodeList.prototype.forEach) {
+	NodeList.prototype.forEach = function (callback, thisArg) {
+		thisArg = thisArg || window;
+		for (var i = 0; i < undefined.length; i++) {
+			callback.call(thisArg, undefined[i], i, undefined);
+		}
+	};
+}
+
+// Check non-tocuh devices
+function isTouchDevice() {
+	var prefixes = ' -webkit- -moz- -o- -ms- '.split(' ');
+	var mq = function mq(query) {
+		return window.matchMedia(query).matches;
+	};
+
+	if ('ontouchstart' in window || window.DocumentTouch && document instanceof DocumentTouch) {
+		return true;
+	}
+
+	var query = ['(', prefixes.join('touch-enabled),('), 'heartz', ')'].join('');
+
+	return mq(query);
+}
+
+function cardEvents() {
+	var links = document.querySelectorAll('[data-product]');
+
+	links.forEach(function (link) {
+		link.addEventListener('click', function (e) {
+			var product = e.currentTarget.dataset.product;
+			var checkbox = document.getElementById(product);
+
+			e.preventDefault();
+
+			if (!checkbox.disabled) {
+				if (checkbox.indeterminate && !checkbox.checked) {
+					checkbox.indeterminate = false;
+				} else if (!checkbox.indeterminate && !checkbox.checked) {
+					checkbox.indeterminate = true;
+				} else if (checkbox.checked) {
+					checkbox.checked = false;
+				}
+			}
+		});
+
+		link.addEventListener('mouseleave', function (e) {
+			var product = e.currentTarget.dataset.product;
+			var checkbox = document.getElementById(product);
+
+			if (!checkbox.disabled && checkbox.indeterminate) {
+				checkbox.indeterminate = false;
+				checkbox.checked = true;
+			}
+		});
+	});
+}
+
+function cardWeightFontSize() {
+	var blocks = document.querySelectorAll('.card__weight .count');
+	var blockWidth = 80;
+	var defaultFontSize = 42;
+
+	blocks.forEach(function (item) {
+		if (item.offsetWidth > blockWidth) {
+			var textLength = item.innerText.length;
+			var fontSize = Math.min(defaultFontSize, blockWidth / textLength * 2);
+
+			item.style.fontSize = fontSize + 'px';
+		}
+	});
+}
+
+cardEvents();
+cardWeightFontSize();
+if (isTouchDevice()) {
+	document.body.classList.add('touch-device');
+}
+
+/***/ }),
+
+/***/ 126:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+__webpack_require__(127);
+
+/***/ })
+
+},[125]);
 //# sourceMappingURL=main.js.map
